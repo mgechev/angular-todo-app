@@ -1,18 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot([
+      {
+        path: 'todos',
+        component: AppComponent,
+        children: [
+          {
+            path: 'app',
+            loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+          },
+          {
+            path: '**',
+            redirectTo: 'app',
+          },
+        ],
+      },
+      {
+        path: '**',
+        redirectTo: 'todos',
+      },
+    ]),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports: [AppComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

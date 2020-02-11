@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "ng-todo": {
@@ -24,7 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+               "node_modules/todomvc-common/base.css",
+               "node_modules/todomvc-app-css/index.css"
             ],
             "scripts": []
           },
@@ -119,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-todo"
+    }
+  },
+  "defaultProject": "ng-todo",
+  "cli": {
+    "analytics": "0552bff8-8246-4518-9dc3-7d3979c1e366"
+  }
 }
